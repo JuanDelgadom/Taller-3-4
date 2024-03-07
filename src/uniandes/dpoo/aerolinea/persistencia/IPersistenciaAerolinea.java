@@ -9,6 +9,6 @@ public interface IPersistenciaAerolinea {
 	
 	public void cargarAerolinea(String archivo, Aerolinea aerolinea) throws IOException, InformacionInconsistenteException;;
 	
-	public void salvarAerolinea(String archivo, Aerolinea aerolinea) throws IOException;;
+	public void salvarAerolinea(String archivo, Aerolinea aerolinea) throws IOException;
 
 }

@@ -1,7 +1,8 @@
 package uniandes.dpoo.aerolinea.modelo.tarifas;
 
+import uniandes.dpoo.aerolinea.modelo.Ruta;
 import uniandes.dpoo.aerolinea.modelo.Vuelo;
-import uniandes.dpoo.aerolinea.modelo.cliente.Cliente;
+import uniandes.dpoo.aerolinea.modelo.cliente.*;
 
 public class CalculadoraTarifasTemporadaBaja extends CalculadoraTarifas {
 	
@@ -13,12 +14,23 @@ public class CalculadoraTarifasTemporadaBaja extends CalculadoraTarifas {
 	
 	@Override
 	public int calcularCostoBase(Vuelo vuelo, Cliente cliente) {
+		Ruta ruta = vuelo.getRuta();
+		int distancia = calcularDistanciaVuelo(ruta);
+		String tipoCliente = cliente.getTipoCliente();
+		if(tipoCliente.compareTo("Corporativo") == 0)
+			return distancia * COSTO_POR_KM_CORPORATIVO;
+		else if(tipoCliente.compareTo("Natural") == 0)
+			return distancia * COSTO_POR_KM_NATURAL;
 		return 0;
 	}
 	
 	@Override
 	public double calcularPorcentajeDescuento(Cliente cliente) {
-		return 0;
+		String tipoCliente = cliente.getTipoCliente();
+		if(tipoCliente.compareTo("Corporativo") == 0) 
+			return 1;
+		else
+			return 0;
 	}
 
 }

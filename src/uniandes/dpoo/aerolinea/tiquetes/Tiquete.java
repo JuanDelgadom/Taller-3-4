@@ -17,7 +17,7 @@ public class Tiquete {
 		this.vuelo = vuelo;
 		this.clienteComprador = clienteComprador;
 		this.vuelo = vuelo;
-		
+		this.tarifa = tarifa;
 		
 	}
 
@@ -41,7 +41,7 @@ public class Tiquete {
 
 
 
-	public Cliente getClienteComprador() {
+	public Cliente getCliente() {
 		return clienteComprador;
 	}
 
@@ -52,7 +52,8 @@ public class Tiquete {
 	}
 	
 	public void marcarComoUsado() {
-		
+		if (isUsado() == false)
+			usado = true;
 	}
 	
 
